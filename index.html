@@ -1,0 +1,305 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>PSU Calculator</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+        <style>
+            pre {
+                background: rgba(0,0,0,0.1);
+                padding: 5px;
+                border-radius: 10px;
+                white-space: pre-wrap;       /* css-3 */
+                white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                white-space: -pre-wrap;      /* Opera 4-6 */
+                white-space: -o-pre-wrap;    /* Opera 7 */
+                word-wrap: break-word; 
+            }
+            .btn-primary {
+                color: #fff;
+                background-color: #636363;
+                border-color: #000000;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- Content -->
+        <div style="height: 5vh"></div>
+        <div class="container">
+
+            <div class="row ">
+
+
+                <div class="col-6">
+
+
+                    <h5 class="">PC Power Supply Calculator</h5>
+                    <div id="Form1"></div>
+        <div style="height: 5vh"></div>
+                    <pre id="Form1Data-btm"></pre>
+
+
+                </div>
+                <div class="col-6">
+
+
+                    <pre id="Form1Data-top"></pre>
+
+
+
+                </div>
+
+            </div>
+
+            
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+        <script src="bs-jsonform.js"></script>
+        <script>
+            $(function() {
+                window.jsonForm = new JsonForm()
+                var Form1Payload = {
+                    hide_validation: false,
+                    button_orientation: "left",
+                    fields: [
+                        {
+                            id: "cputdp",
+                            name: "CPU",
+                            type: "field",
+                            field: {
+                                type: "select",
+                                options: [
+                                    {"":""},
+                                    {"Celeron G3900":"51"},
+                                    {"Celeron G3900T":"47"},
+                                    {"Celeron G3920":"51"},
+                                    {"Celeron G3930":"51"},
+                                    {"Celeron G4900":"54"},
+                                    {"Celeron G4920":"54"},
+                                    {"Core i3-6098P":"54"},
+                                    {"Core i3-6100":"51"},
+                                    {"Core i3-6100T":"51"},
+                                    {"Core i3-6300":"51"},
+                                    {"Core i3-6300T":"51"},
+                                    {"Core i3-6320":"55"},
+                                    {"Core i3-7100":"15"},
+                                    {"Core i3-7100T":"15"},
+                                    {"Core i3-7300":"15"},
+                                    {"Core i3-7320":"51"},
+                                    {"Core i3-7350K":"60"},
+                                    {"Core i3-8100":"65"},
+                                    {"Core i3-8300":"62"},
+                                    {"Core i3-8300T":"62"},
+                                    {"Core i3-8350K":"91"},
+                                    {"Core i3-9100":"65"},
+                                    {"Core i3-9100F":"65"},
+                                    {"Core i3-9350KF":"91"},
+                                    {"Core i5-6400":"65"},
+                                    {"Core i5-6402P":"65"},
+                                    {"Core i5-6500":"65"},
+                                    {"Core i5-6600":"65"},
+                                    {"Core i5-6600K":"91"},
+                                    {"Core i5-6600T":"35"},
+                                    {"Core i5-7400":"65"},
+                                    {"Core i5-7500":"65"},
+                                    {"Core i5-7500T":"35"},
+                                    {"Core i5-7600":"65"},
+                                    {"Core i5-7600K":"91"},
+                                    {"Core i5-7600T":"35"},
+                                    {"Core i5-8400":"65"},
+                                    {"Core i5-8500":"65"},
+                                    {"Core i5-8500T":"35"},
+                                    {"Core i5-8600":"65"},
+                                    {"Core i5-8600K":"95"},
+                                    {"Core i5-8600T":"35"},
+                                    {"Core i5-9400":"65"},
+                                    {"Core i5-9400F":"65"},
+                                    {"Core i5-9500":"65"},
+                                    {"Core i5-9500F":"65"},
+                                    {"Core i5-9600K":"95"},
+                                    {"Core i5-9600KF":"95"},
+                                    {"Core i7-6700":"65"},
+                                    {"Core i7-6700K":"91"},
+                                    {"Core i7-6700TE":"35"},
+                                    {"Core i7-7700":"65"},
+                                    {"Core i7-7700K":"91"},
+                                    {"Core i7-7700T":"35"},
+                                    {"Core i7-8086K":"95"},
+                                    {"Core i7-8700":"65"},
+                                    {"Core i7-8700K":"95"},
+                                    {"Core i7-9700":"65"},
+                                    {"Core i7-9700F":"65"},
+                                    {"Core i7-9700K":"65"},
+                                    {"Core i7-9700KF":"95"},
+                                    {"Core i9-9900":"65"},
+                                    {"Core i9-9900K":"95"},
+                                    {"Core i9-9900KF":"95"},
+                                    {"Pentium G4400":"54"},
+                                    {"Pentium G4500":"51"},
+                                    {"Pentium G4520":"51"},
+                                    {"Pentium G4560":"65"},
+                                    {"Pentium G4560T":"35"},
+                                    {"Pentium G4600":"51"},
+                                    {"Pentium G4600T":"35"},
+                                    {"Pentium G4620":"51"},
+                                    {"Pentium Gold G5400":"58"},
+                                    {"Pentium Gold G5500":"54"},
+                                    {"Pentium Gold G5600":"54"}
+                                ]
+                            }
+                        },
+                        {
+                            id: "mobotdp",
+                            name: "Motherboard",
+                            type: "field",
+                            field: {
+                                type: "select",
+                                options: [
+                                    {"":""},
+                                    {"ATX":"70"},
+                                    {"Micro ATX":"60"},
+                                    {"Mini-ATX":"30"},
+                                    {"Thin Mini-ITX":"20"},
+                                    {"SSI CEB":"150"},
+                                    {"SSI EEB":"150"},
+                                    {"XL ATX":"130"}
+                                ]
+                            }
+                        },
+                        {
+                            id: "gputdp",
+                            name: "Graphics Card",
+                            type: "field",
+                            field: {
+                                type: "select",
+                                options: [
+                                    {"":""},
+                                    {"GeForce GTX 650":"110"},
+                                    {"GeForce GTX 650 Ti":"150"},
+                                    {"GeForce GTX 660":"140"},
+                                    {"GeForce GTX 660 Ti":"150"},
+                                    {"GeForce GTX 670":"170"},
+                                    {"GeForce GTX 680":"195"},
+                                    {"GeForce GTX 690":"300"},
+                                    {"GeForce GTX 750":"55"},
+                                    {"GeForce GTX 750 Ti":"60"},
+                                    {"GeForce GTX 760":"150"},
+                                    {"GeForce GTX 770":"170"},
+                                    {"Geforce GTX 780":"190"},
+                                    {"Geforce GTX 780 Ti":"195"},
+                                    {"GeForce GTX TITAN Z":"400"},
+                                    {"GeForce GTX 950":"65"},
+                                    {"GeForce GTX 960":"150"},
+                                    {"GeForce GTX 970":"170"},
+                                    {"GeForce GTX 980":"190"},
+                                    {"GeForce GTX 980 Ti":"195"},
+                                    {"Geforce GTX TITAN X":"245"},
+                                    {"GeForce GTX 1030":"55"},
+                                    {"GeForce GTX 1050":"110"},
+                                    {"GeForce GTX 1050 Ti":"125"},
+                                    {"GeForce GTX 1060":"150"},
+                                    {"GeForce GTX 1650":"175"},
+                                    {"GeForce GTX 1650 SUPER":"170"},
+                                    {"GeForce GTX 1660":"180"},
+                                    {"GeForce GTX 1660 SUPER":"185"},
+                                    {"GeForce GTX 1660 Ti":"190"},
+                                    {"GeForce GTX 1070":"195"},
+                                    {"GeForce GTX 1070 Ti":"200"},
+                                    {"GeForce GTX 1080":"205"},
+                                    {"GeForce GTX 1080 Ti":"225"},
+                                    {"NVIDIA TITAN X":"275"},
+                                    {"NVIDIA TITAN V":"400"},
+                                    {"GeForce RTX 2060":"150"},
+                                    {"GeForce RTX 2060 SUPER":"155"},
+                                    {"GeForce RTX 2070":"165"},
+                                    {"GeForce RTX 2070 SUPER":"170"},
+                                    {"GeForce RTX 2080 SUPER":"180"},
+                                    {"GeForce RTX 2080":"185"},
+                                    {"GeForce RTX 2080 Ti":"195"},
+                                    {"NVIDIA TITAN RTX":"245"},
+                                    {"GeForce RTX 3070":"200"},
+                                    {"GeForce RTX 3080":"300"},
+                                    {"GeForce RTX 3090":"500"}
+                                ]
+                            }
+                        },
+                        {
+                            id: "ramtdp",
+                            name: "RAM",
+                            type: "field",
+                            field: {
+                                type: "radio",
+                                // default_value: "Option B",
+                                options: [
+                                    {"2x 32GB DDR4":"384"},
+                                    {"2x 16GB DDR4":"192"},
+                                    {"2x 8GB DDR4":"96"},
+                                    {"2x 4GB DDR4":"48"},
+                                    {"2x 32GB DDR3":"24"},
+                                    {"2x 8GB DDR3":"12"},
+                                    {"2x 4GB DDR3":"6"},
+                                    {"2x 2GB DDR3":"3"}
+                                ],
+                                width: "6"
+                            }
+                        },
+                       {
+                            id: "ssdtdp",
+                            name: "SSD",
+                            type: "field",
+                            field: {
+                                type: "select",
+                                options: [
+                                    {"":""},
+                                    {"Not Installed":"0"},
+                                    {"Under 120GB":"15"},
+                                    {"120GB - 256GB":"15"},
+                                    {"256GB - 512GB":"15"},
+                                    {"512GB - 1TB":"15"},
+                                    {"1TB+":"15"}
+                                ]
+                            }
+                        },
+                       {
+                            id: "hddtdp",
+                            name: "HDD",
+                            type: "field",
+                            field: {
+                                type: "select",
+                                options: [
+                                    {"":""},
+                                    {"Not Installed":"0"},
+                                    {"5400RPM 3.5\" HDD":"15"},
+                                    {"7200RPM 3.5\" HDD":"15"},
+                                    {"10,000RPM 2.5\" HDD":"15"},
+                                    {"10,000RPM 3.5\" HDD":"15"},
+                                    {"15,000RPM 2.5\" HDD":"15"},
+                                    {"15,000RPM 3.5\" HDD":"15"}
+                                ]
+                            }
+                        },
+                    ]
+                }
+                window.jsonForm.create("#Form1", Form1Payload, "Form1")
+                window.jsonForm.registerSubmit(Form1Handler, "Form1")
+
+                function Form1Handler(valid, data) {
+                    if(valid) {
+                        //$("#Form1Data").text(JSON.stringify(data, null, 2))
+                        const formResult = data
+                        $("#Form1Data-top").html("Your recommended Power Supply wattage is:<br><H2>" + ( (formResult.cputdp*1) + (formResult.mobotdp*1) + (formResult.gputdp*1) + (formResult.ramtdp*1) + (formResult.ssdtdp*1) + (formResult.hddtdp*1) ) + " Watts</H2>")
+                        $("#Form1Data-btm").html("Your recommended Power Supply wattage is:<br><H2>" + ( (formResult.cputdp*1) + (formResult.mobotdp*1) + (formResult.gputdp*1) + (formResult.ramtdp*1) + (formResult.ssdtdp*1) + (formResult.hddtdp*1) ) + " Watts</H2>")
+                    } else {
+                        $("#Form1Data-top").text("Cannot calculate. Did you fill out all fields?")
+                        $("#Form1Data-btm").text("Cannot calculate. Did you fill out all fields?")
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
